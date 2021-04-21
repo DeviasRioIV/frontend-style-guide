@@ -589,3 +589,5 @@ Add these on the `scripts` object on `package.json`:
 ```
 
 And that's it! Run `npm start` for development mode and `npm run build` for production mode.
+
+You can find a fully working example on [/react-example](/react-example) directory.
