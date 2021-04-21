@@ -16,7 +16,7 @@
   App.js
   AppContext.jsx
   index.js
-  ./Helper
+  ./Helpers
     --/HelperName
       --HelperName.jsx
       --HelperName.style.jsx
@@ -48,9 +48,9 @@ It's made from 5 main categories:
 
 * <b>App.js</b> Contains the app wrapper, routing setup and calls the bootstrap method.
 
-* <b>./Helper/bootstrap.js</b> Should be a function that handles the app bootstrap... resources load, initial requests, async storage data, etc.
+* <b>./Helpers/bootstrap.js</b> Should be a function that handles the app bootstrap... resources load, initial requests, async storage data, etc.
 
-* <b>./Helper</b> These are functions or components that help us solve system level issues.
+* <b>./Helpers</b> These are functions or components that help us solve system level issues.
 
 * <b>./Screens</b> These are the app screens, they can be grouped if they lay under the same concept. (e.g. /Account)
 
