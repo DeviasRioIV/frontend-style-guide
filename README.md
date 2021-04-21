@@ -2,13 +2,13 @@
 ## Sections
 
 - [Project Structure](#project-structure)
-- [Data Flow](#data-flow)
 - [File Structure](#file-structure)
 - [Spacing](#spacing)
 - [Comments](#comments)
 - [Variable Declarations](#variable-declarations)
 - [JSX Guidelines](#jsx-guidelines)
 - [Styles](#styles)
+- [Project Setup](#project-setup)
 
 ## Project Structure
 
@@ -65,7 +65,6 @@ Also, note that:
 * Style files have the same name as the component: `Name.style.jsx` for react native and `Name.less` for react web
 * Services don't need to have the same name as the component, their name has to be based on their function.
 
-## Data flow
 ## File Structure
 
 You may or may not use all of these, but this is the order:
@@ -564,3 +563,29 @@ all: {
   borderStyle
 }
 ```
+
+## Project setup
+
+#### <b>For react web:</b>
+
+Use this command to install the initial dev dependencies
+
+`npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader browser-sync browser-sync-webpack-plugin css-loader history less less-load history less less-loader mini-css-extract-plugin path react react-dom react-router-dom regenerator-runtime webpack webpack-cli webpack-dev-server style-loader`
+
+Add these files to the directory root:
+
+- [.babelrc](/readme/react/.babelrc)
+- [webpack.config.js](/readme/react/webpack.config.js)
+- [/.webpack/browsersync.js](/readme/react/.webpack/browsersync.js)
+- [/dist/index.html](/readme/react/dist/index.html)
+
+Add these on the `scripts` object on `package.json`:
+
+```
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production"
+  },
+```
+
+And that's it! Run `npm start` for development mode and `npm run build` for production mode.
