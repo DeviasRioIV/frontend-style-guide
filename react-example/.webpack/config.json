@@ -1,0 +1,13 @@
+{
+
+  "api": "",
+
+  "server" : "/",
+
+  "base"   : "/build",
+
+  "browserSync" : {
+    "open" : false,
+    "port" : 8000
+  }
+}
