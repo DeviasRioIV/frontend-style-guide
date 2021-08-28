@@ -16,7 +16,7 @@ module.exports = {
     compress           : true,
     port               : 3000,
     historyApiFallback : true,
-    contentBase        : path.resolve(__dirname, 'dist')
+    static             : path.resolve(__dirname, 'dist')
   },
 
   entry: {
