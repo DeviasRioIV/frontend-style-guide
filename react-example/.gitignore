@@ -1,3 +1,6 @@
+# Local webpack config
+.webpack/config.json
+
 # Logs
 logs
 *.log
