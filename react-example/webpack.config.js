@@ -79,6 +79,13 @@ module.exports = {
     ]
   },
 
+  resolve: {
+    alias: {
+      Helpers : path.resolve(__dirname, 'src/Helpers/'),
+    },
+    extensions: ['.js', '.jsx', '.less', '...']
+  },
+
   plugins: [
     browserSync
   ]
