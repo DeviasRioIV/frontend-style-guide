@@ -570,7 +570,7 @@ all: {
 
 Use this command to install the initial dev dependencies
 
-`npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader browser-sync browser-sync-webpack-plugin css-loader less less-loader mini-css-extract-plugin path webpack webpack-cli webpack-dev-server style-loader`
+`npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader browser-sync browser-sync-webpack-plugin css-loader less less-loader mini-css-extract-plugin path webpack webpack-cli webpack-dev-server style-loader file-loader url-loader`
 
 Use this command to install the initial dependencies
 

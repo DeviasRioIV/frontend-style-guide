@@ -53,10 +53,29 @@ module.exports = {
       },
       {
 
-        test: /\.less$/,
+        test: /\.less|\.css$/,
 
         use: ['style-loader', 'css-loader', 'less-loader']
       },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'bootcamp/dist/public/default/img/login/account-sign/[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(otf|woff|woff2|eot|ttf|svg)$/,
+        use: [
+          {
+            loader: 'url-loader?limit=100000'
+          }
+        ]
+      }
     ]
   },
 
