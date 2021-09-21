@@ -1,5 +1,5 @@
 # Local webpack config
-.webpack/config.json
+src/config.json
 
 # Logs
 logs

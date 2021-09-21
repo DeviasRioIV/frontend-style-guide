@@ -4,10 +4,11 @@
 
   "server" : "/",
 
-  "base"   : "/build",
+  "base"   : "/dist",
 
   "browserSync" : {
     "open" : false,
+    "base": "localhost",
     "port" : 8000
   }
 }

@@ -7,7 +7,7 @@ const config      = require("./.webpack/config.json");
 
 module.exports = {
 
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
 
   watchOptions: {
     ignored: ["node_modules/**"],
@@ -70,22 +70,28 @@ module.exports = {
         ],
       },
       {
-        test: /\.(otf|woff|woff2|eot|ttf|svg)$/,
+        test: /\.(jpe?g|gif|png|svg)$/i,
         use: [
           {
-            loader: 'url-loader?limit=100000'
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|otf|woff|woff2|eot|ttf|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
           }
         ]
       }
     ]
-  },
-
-  externals: {
-
-    config : JSON.stringify({
-      basePath: config.base,
-    }),
-
   },
 
   resolve: {
