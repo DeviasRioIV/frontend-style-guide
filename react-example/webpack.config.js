@@ -3,7 +3,6 @@ const path = require("path");
 
 // Internal modules
 const browserSync = require("./.webpack/browsersync.js");
-const config      = require("./.webpack/config.json");
 
 module.exports = {
 
