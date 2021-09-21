@@ -606,8 +606,8 @@ Add these on the `scripts` object on `package.json`:
   },
 ```
 
+You can find a fully working example on [/react-example](/react-example) directory.
+
 And that's it! Run `npm start` for development mode and `npm run build` for production mode.
 
-Run `npm format` to make sure
-
-You can find a fully working example on [/react-example](/react-example) directory.
+Run `npm format` to make sure standardx format is correct
