@@ -570,28 +570,36 @@ all: {
 
 Use this command to install the initial dev dependencies
 
-`npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader browser-sync browser-sync-webpack-plugin css-loader less less-loader mini-css-extract-plugin path webpack webpack-cli webpack-dev-server style-loader file-loader url-loader`
+`npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader core-js snazzy standardx webpack webpack-cli webpack-dev-server browser-sync browser-sync-webpack-plugin css-loader less less-loader mini-css-extract-plugin path style-loader file-loader url-loader image-webpack-loader`
 
 Use this command to install the initial dependencies
 
-`npm install history react react-dom react-router-dom regenerator-runtime`
+`npm install history react react-dom react-router-dom regenerator-runtime normalize.css`
 
 Add these files to the directory root:
 
-- [.babelrc](/readme/react/.babelrc)
-- [webpack.config.js](/readme/react/webpack.config.js)
-- [/.webpack/browsersync.js](/readme/react/.webpack/browsersync.js)
-- [/dist/index.html](/readme/react/dist/index.html)
+- [.babelrc](react-example/.babelrc)
+- [.eslintrc](react-example/.eslintrc)
+- [webpack.config.js](react-example/webpack.config.js)
+- [.webpack/browsersync.js](react-example/.webpack/browsersync.js)
+- [dist/index.html](react-example/dist/index.html)
+
+Copy this file and rename it to `config.json`:
+
+- [src/config-sample.json](react-example/src/config-sample.json)
 
 Add these on the `scripts` object on `package.json`:
 
 ```
   "scripts": {
     "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "format": "standardx --verbose | snazzy"
   },
 ```
 
 And that's it! Run `npm start` for development mode and `npm run build` for production mode.
+
+Run `npm format` to make sure
 
 You can find a fully working example on [/react-example](/react-example) directory.
