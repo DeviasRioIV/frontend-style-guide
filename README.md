@@ -578,7 +578,7 @@ Copy .gitignore:
 
 Use this command to install the initial dev dependencies
 
-`npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader core-js snazzy standardx webpack webpack-cli webpack-dev-server browser-sync browser-sync-webpack-plugin css-loader less less-loader mini-css-extract-plugin path style-loader file-loader url-loader image-webpack-loader`
+`npm install --save-dev @babel/core @babel/preset-env @babel/eslint-parser @babel/preset-react babel-loader core-js snazzy standardx webpack webpack-cli webpack-dev-server browser-sync browser-sync-webpack-plugin css-loader less less-loader mini-css-extract-plugin path style-loader file-loader url-loader image-webpack-loader`
 
 Use this command to install the initial dependencies
 
