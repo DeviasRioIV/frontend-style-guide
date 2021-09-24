@@ -3,6 +3,7 @@
 
 - [Project Structure](#project-structure)
 - [File Structure](#file-structure)
+- [Code Format](#code-format)
 - [Spacing](#spacing)
 - [Comments](#comments)
 - [Variable Declarations](#variable-declarations)
@@ -13,16 +14,15 @@
 ## Project Structure
 
 ```
-  App.js
-  AppContext.jsx
   index.js
+  App.jsx
   ./Helpers
     --/HelperName
       --HelperName.jsx
       --HelperName.style.jsx
       --HelperName.less
-    --bootstrap.js
     --helperName.js
+    --Context.jsx
   ./Screens
     --/ScreenName
       --ScreenName.jsx
@@ -34,21 +34,16 @@
       --SharedName.jsx
       --SharedName.style.jsx
       --SharedName.less
-  ./Navigation
-    --/NavName
-      --NavName.jsx
-      --NavName.style.jsx
-      --NavName.less
-    --MainNavigation.js
+  ./Router
+    --Router.js
+    --RouterHandler.js
 ```
 
 We are using a basic project structure that allows us to scale up when the project needs to.
 
 It's made from 5 main categories:
 
-* <b>App.js</b> Contains the app wrapper, routing setup and calls the bootstrap method.
-
-* <b>./Helpers/bootstrap.js</b> Should be a function that handles the app bootstrap... resources load, initial requests, async storage data, etc.
+* <b>App.jsx</b> Contains the app wrapper, routing setup and calls the bootstrap method.
 
 * <b>./Helpers</b> These are functions or components that help us solve system level issues.
 
@@ -192,6 +187,15 @@ Effect with cleanup:
   )
 ```
 
+## Code Format
+
+We use <a href="https://standardjs.com/" target="_blank">standard</a> code style with some tweaks (<a href="https://github.com/standard/standardx" target="_blank">standardx</a>).
+
+You can install `standadx` globally with this npm command: `npm install standardx --global`.
+
+For eslinting, you can install the <a href="https://marketplace.visualstudio.com/items?itemName=TimonVS.ReactSnippetsStandard" target="_blank">vscode extension</a> for standardjs and set `standardx` as the engine in the settings.
+
+<a href="https://standardjs.com/awesome.html#editor-plugins" target="_blank">Check out extensions for other code editors</a>
 ## Spacing
 
 Spacing is very important. We use empty break lines between concepts to make the code more readable.
