@@ -95,7 +95,10 @@ module.exports = {
 
   resolve: {
     alias: {
-      Helpers : path.resolve(__dirname, 'src/Helpers/'),
+      Helpers: path.resolve(__dirname, 'src/Helpers/'),
+      Components: path.resolve(__dirname, 'src/Components/'),
+      Screens: path.resolve(__dirname, 'src/Screens/'),
+      Router: path.resolve(__dirname, 'src/Router/')
     },
     extensions: ['.js', '.jsx', '.less', '...']
   },
