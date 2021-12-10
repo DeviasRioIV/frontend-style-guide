@@ -13,6 +13,7 @@
         }
       }
     ],
-    "padded-blocks": 0
+    "padded-blocks": 0,
+    "no-case-declarations": 0
   }
 }
