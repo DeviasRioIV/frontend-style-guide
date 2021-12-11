@@ -1,21 +1,69 @@
-// External modules
 import React from 'react'
 
-// Internal modules
-
-export default function TextArea () {
+export default function TextArea ({ type, label, name, maxLength, disabled, optional, handler, submit, validator }) {
 
   // Local state
-  const [loading, setLoading] = React.useState(true)
+  const [value, setValue] = React.useState('')
+  const [focus, setFocus] = React.useState(false)
+  const [error, seterror] = React.useState(false)
 
-  // Mount effect
-  React.useEffect(() => {}, [])
+  // Element reference
+  const textarea = React.useRef(null)
 
   // Methods
-  const method = () => {}
+  const change = newVal => {
+    // Check max length
+    if (maxLength && newVal.length > maxLength) {
+      return false
+    }
+
+    // Update local state
+    setValue(newVal)
+
+    // Check validation
+    const isValid = validator(newVal, name)
+
+    // Update parent state
+    handler(name, { value: newVal, valid: isValid })
+  }
+
+  const blur = () => {
+    // Update focus
+    setFocus(false)
+
+    // Check validation
+    const isValid = validator(value, name)
+
+    // Update error
+    seterror(!isValid)
+  }
+
+  const keyDown = e => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+      submit()
+    }
+  }
 
   return (
-    <div>
+    <div
+      className={`
+        textarea-container
+        ${(focus || value.length) ? 'has-focus' : ''}
+        ${error ? 'has-error' : ''}
+      `}
+    >
+      <label htmlFor={name}>{label}</label>
+      <textarea
+        ref={textarea}
+        type={type}
+        name={name}
+        value={value}
+        disabled={disabled}
+        onFocus={() => setFocus(true)}
+        onBlur={blur}
+        onChange={e => change(e.target.value)}
+        onKeyDown={keyDown}
+      />
 
     </div>
   )
