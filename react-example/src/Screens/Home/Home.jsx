@@ -16,6 +16,7 @@ export default function Home () {
         <li>Table</li>
         <li>Tabs</li>
         <li>Checkbox</li>
+        <li>Account (for header)</li>
       </ul>
 
       <h4>Para analizar:</h4>
