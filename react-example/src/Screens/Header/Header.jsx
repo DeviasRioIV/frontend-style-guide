@@ -12,54 +12,165 @@ export default function HeaderDocs () {
 
       <h1>Header Docs:</h1>
 
-      <strong>Hace falta implementarlo</strong>
-
-      <h4>Features:</h4>
+      <h4 style={{color: 'red'}}>Pending:</h4>
 
       <ul>
+        <li>Mobile menu animation or dropdown</li>
+        <li>Search</li>
+        <li>Cart</li>
+        <li>Account</li>
+      </ul>
 
+      <h4>Props:</h4>
+
+      <ul>
         <li>
-          Enlace logo
+          <strong>account</strong>
+          <br />
+          <i>bool | optional</i>
+          <br />
+          <p>
+            States if the account component should be rendered inside the header
+          </p>
         </li>
 
         <li>
-          Elegir la posición del logo <i>left/center/right</i>
+          <strong>backgroundColor</strong>
+          <br />
+          <i>string | optional</i>
+          <br />
+          <p>
+            Sets the background color for the header
+          </p>
         </li>
 
         <li>
-          Menú navegación
+          <strong>burgerMenu</strong>
+          <br />
+          <i>bool | optional</i>
+          <br />
+          <p>
+            Specifies if the menu should only display in "burger" mode
+          </p>
         </li>
 
         <li>
-          Icono mobile
+          <strong>cart</strong>
+          <br />
+          <i>bool | optional</i>
+          <br />
+          <p>
+            Specifies if the cart component should be displayed
+          </p>
         </li>
 
         <li>
-          Sólo modo mobile (solo muestra el ícono para desplegar)
+          <strong>links</strong>
+          <br />
+          <i>array | optional</i>
+          <br />
+          <p>
+            List of links to display in the header
+          </p>
+          <pre>
+{`
+  [
+    {
+      url: string,
+      label: string
+    },
+    {
+      label: string,
+      links: [
+        {
+          url: string,
+          label: string
+        }
+      ]
+    }
+  ]
+`}
+          </pre>
         </li>
 
         <li>
-          Barra de búsqueda
+          <strong>linkColor</strong>
+          <br />
+          <i>string (hex|rgba) | optional</i>
+          <br />
+          <p>
+            Specifies the color of a regular link
+          </p>
         </li>
 
         <li>
-          Carro
+          <strong>linkActiveColor</strong>
+          <br />
+          <i>string (hex|rgba) | optional</i>
+          <br />
+          <p>
+            Specifies the color of the active link
+          </p>
         </li>
 
         <li>
-          Logout
+          <strong>logoImg</strong>
+          <br />
+          <i>string or img | required</i>
+          <br />
+          <p>
+            Specifies the logo img to display in the header
+          </p>
         </li>
 
         <li>
-          Background
+          <strong>logoPosition</strong>
+          <br />
+          <i>string | optional</i>
+          <br />
+          <p>
+            Specifies the position of the logo
+          </p>
         </li>
 
         <li>
-          Link color
+          <strong>logoUrl</strong>
+          <br />
+          <i>string | optional</i>
+          <br />
+          <p>
+            Specifies if the logo should have a URL
+          </p>
         </li>
 
         <li>
-          Active link color
+          <strong>menuIcon</strong>
+          <br />
+          <i>string or icon | optional</i>
+          <br />
+          <p>
+            Replaces the default mobile icon
+          </p>
+        </li>
+
+        <li>
+          <strong>search</strong>
+          <br />
+          <i>bool | optional</i>
+          <br />
+          <p>
+            Displays the search icon
+          </p>
+        </li>
+
+        <li>
+          <strong>sticky</strong>
+          <br />
+          <i>bool | optional</i>
+          <br />
+          <p>
+            Sticks the header to the top of the screen
+          </p>
         </li>
       </ul>
     </div>

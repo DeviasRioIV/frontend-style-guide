@@ -18,7 +18,29 @@ export default function Router () {
       <Routes>
 
         {/* Routes */}
-        <Route element={<Header />}>
+        <Route
+          element={
+            <Header
+              background='#186B7F'
+              links={[
+                {
+                  url: '/',
+                  label: 'Docs'
+                },
+                {
+                  url: '/sample',
+                  label: 'Sample'
+                }
+              ]}
+              linkActiveColor='#FAFAFA'
+              linkColor='#FFF'
+              logoImg='/img/logo.png'
+              logoPosition='left'
+              logoUrl='/'
+              sticky
+            />
+          }
+        >
 
           <Route element={<Layout />}>
 
