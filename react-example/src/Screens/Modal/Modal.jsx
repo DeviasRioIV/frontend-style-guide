@@ -1,18 +1,14 @@
 // External modules
 import React from 'react'
 
-// Internal modules
+// Components
+import Modal from 'Components/Modal/Modal'
 
 export default function ModalDocs () {
 
   // Local state
-  const [loading, setLoading] = React.useState(true)
-
-  // Mount effect
-  React.useEffect(() => {}, [])
-
-  // Methods
-  const method = () => {}
+  const [modalOpen, setModalOpen] = React.useState(false)
+  const [name, setName] = React.useState('')
 
   return (
     <div>
@@ -26,13 +22,44 @@ export default function ModalDocs () {
       <ul>
 
         <li>
-          Botón de cierre (opcional)
+          ✓ Botón de cierre (opcional)
         </li>
 
         <li>
-          Cierre por backdrop (opcional)
+          ✓ Cierre por backdrop (opcional)
+        </li>
+
+        <li>
+          Enter transitions (top-left-right-bottom)
         </li>
       </ul>
+
+      <h2>Name is: {name}</h2>
+
+      <button onClick={() => setModalOpen(true)}>
+        Open modal
+      </button>
+
+      <Modal
+        backdrop
+        btnClose
+        open={modalOpen}
+        setOpen={setModalOpen}
+      >
+        <h1>Modal content</h1>
+
+        <input
+          type='text'
+          onChange={e => setName(e.target.value)}
+          value={name}
+        />
+
+        <button
+          onClick={() => setModalOpen(false)}
+        >
+          ¿Estas seguro?
+        </button>
+      </Modal>
     </div>
   )
 }

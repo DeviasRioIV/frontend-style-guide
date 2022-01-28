@@ -1,22 +1,66 @@
 // External modules
 import React from 'react'
+import { CSSTransition } from 'react-transition-group'
+import { FaTimes } from 'react-icons/fa'
 
 // Internal modules
+import './Modal.less'
 
-export default function Modal () {
+export default function Modal (props) {
 
-  // Local state
-  const [loading, setLoading] = React.useState(true)
+  // Extract props
+  const {
+    backdrop,
+    btnClose,
+    children,
+    open,
+    setOpen
+  } = props
 
-  // Mount effect
-  React.useEffect(() => {}, [])
+  // Open effect
+  React.useEffect(() => {
+    if (open) {
+      document.body.classList.add('modal-open')
+    } else {
+      document.body.classList.remove('modal-open')
+    }
+  }, [open])
 
   // Methods
-  const method = () => {}
+  const backdropClose = () => {
+    if (backdrop) {
+      setOpen(false)
+    }
+  }
 
   return (
-    <div>
+    <CSSTransition
+      timeout={0}
+      classNames='modal'
+      unmountOnExit
+      in={open}
+    >
+      <div
+        className={`modal-component ${open ? 'show' : ''}`}
+      >
 
-    </div>
+        {/* Backdrop */}
+        <div className='backdrop' onClick={backdropClose} />
+
+        <div className='modal-content'>
+
+          {/* Close btn */}
+          {
+            btnClose &&
+              <button className='close-btn' onClick={() => setOpen(false)}>
+                <FaTimes />
+              </button>
+          }
+
+          {/* Content */}
+          {children}
+        </div>
+      </div>
+    </CSSTransition>
   )
 }
