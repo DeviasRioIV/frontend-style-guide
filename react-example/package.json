@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
+    "stop": "node ./.webpack/stop.js",
     "build": "webpack --mode=production",
     "format": "standardx --verbose | snazzy"
   },
