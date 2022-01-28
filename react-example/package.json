@@ -9,6 +9,13 @@
     "build": "webpack --mode=production",
     "format": "standardx --verbose | snazzy"
   },
+  "standardx": {
+    "global": [
+      "chrome",
+      "muon",
+      "postMessage"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
