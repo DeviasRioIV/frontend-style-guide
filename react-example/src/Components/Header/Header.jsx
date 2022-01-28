@@ -1,7 +1,13 @@
 // External modules
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaEllipsisV } from 'react-icons/fa'
+
+// Internal modules
+import { RouterContext } from 'Router/RouterContext'
+
+// Components
+import Sidebar from 'Components/Sidebar/Sidebar'
 
 // Styles
 import './Header.less'
@@ -11,19 +17,21 @@ export default function Header (props) {
   // Extract props
   const {
     account,
-    background,
-    burgerMenu,
     cart,
     links,
-    linkColor,
-    linkActiveColor,
     logoImg,
     logoPosition,
     logoUrl,
     menuIcon,
+    iconLinksMode,
+    iconSidebarMode,
     search,
+    sidebar,
     sticky
   } = props
+
+  // Global state
+  const { state, dispatch } = React.useContext(RouterContext)
 
   // Local state
   const [showMenu, setShowMenu] = React.useState(false)
@@ -31,23 +39,19 @@ export default function Header (props) {
   // References
   const headerEl = React.useRef(null)
 
-  // Links effect
-  React.useEffect(() => {
-    if (links) {
-      links.map(link => {
-        // if (link === 'active') {
-        //   link.active = true
-        // }
-      })
-    }
-  }, [links])
-
   // Sticky effect
   React.useEffect(() => {
     stickHeader()
   }, [headerEl])
 
   // Methods
+  const toggleSidebar = () => {
+    dispatch({
+      type: 'UPDATE_SIDEBAR_OPEN',
+      data: !state.sidebarOpen
+    })
+  }
+
   const toggleMenu = () => {
     const newVal = !showMenu
     setShowMenu(newVal)
@@ -85,18 +89,30 @@ export default function Header (props) {
 
       <header
         id='main-header'
-        className={
-          burgerMenu ? 'burger-mode' : '',
-          sticky ? 'sticky' : ''
-        }
-        style={{
-          backgroundColor: background
-        }}
+        className={`
+          ${iconLinksMode ? 'icon-mode' : null}
+          ${sticky ? 'sticky' : ''}
+        `}
         ref={headerEl}
       >
 
-        {/* Logo with default/left position */}
-        {logoPosition !== 'right' && <RenderLogo />}
+        <div id='left-side'>
+
+          {/* Sidebar Button */}
+          {
+            sidebar &&
+              <button
+                id='toggle-sidebar-btn'
+                className={iconSidebarMode ? 'icon-mode' : ''}
+                onClick={toggleSidebar}
+              >
+                <FaBars />
+              </button>
+          }
+
+          {/* Logo with default/left position */}
+          {logoPosition !== 'right' && <RenderLogo />}
+        </div>
 
         {/* Navigation */}
         <div id='navigation-container'>
@@ -107,30 +123,25 @@ export default function Header (props) {
             onClick={toggleMenu}
           >
             {menuIcon}
-            {!menuIcon && <FaBars color={linkColor} />}
+            {!menuIcon && <FaEllipsisV />}
           </button>
 
           {/* Menu */}
           <nav
             id='header-nav'
             className={showMenu ? 'show' : ''}
-            style={{
-              backgroundColor: background
-            }}
           >
             {
               links &&
-                links.map((link,index) => (
-                  <Link
-                    key={index}
-                    to={link.url}
-                    style={{
-                      color: link.active ? linkActiveColor : linkColor
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                ))
+              links.map((link, index) => (
+                <Link
+                  key={index}
+                  to={link.url}
+                  className={link.active ? 'active' : ''}
+                >
+                  {link.label}
+                </Link>
+              ))
             }
           </nav>
         </div>
@@ -148,7 +159,13 @@ export default function Header (props) {
         {logoPosition === 'right' && <RenderLogo />}
       </header>
 
+      {/* Sidebar */}
+      {
+        sidebar && <Sidebar />
+      }
+
       <Outlet />
+
     </div>
   )
 }

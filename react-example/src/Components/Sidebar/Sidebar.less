@@ -11,10 +11,9 @@
 
   @media all and (max-width: 992px) {
     position: fixed;
-    top: 64px;
+    top: 76px;
     height: calc(100vh - 64px);
     left: 0%;
-    background-color: #fff;
     box-shadow: 0 5px 35px rgb(0 0 0 / 15%);
     z-index: 1000;
     transition: left 0.3s ease-in-out;
@@ -34,14 +33,17 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    background-color: rgba(0,0,0,.2);
     display: none;
+    z-index: 0;
+    transition: background-color .3s ease-in-out;
 
     @media all and (max-width: 992px) {
       display: block;
     }
   }
 
-  #user-container {
+  #account-container {
     border-bottom: 1px solid #ededed;
 
     .username {
@@ -76,11 +78,46 @@
   }
 
   nav {
+    position: relative;
+    max-height: ~"calc(100vh - 75.78px)";
+    height: 100%;
     padding: 10px 30px 30px;
+    background-color: #fff;
     list-style: none;
+    overflow-y: auto;
+    z-index: 1;
+
+    .routes-group {
+
+      h4 {
+        margin: 0;
+        padding: 10px;
+        color: #333;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        cursor: default;
+
+        &.right-icon svg {
+          margin-right: 0;
+          margin-left: .5rem;
+        }
+
+        svg {
+          margin-right: .5rem;
+          font-size: 16px;
+        }
+      }
+
+      li {
+        padding-left: .5rem;
+      }
+    }
 
     li {
-      margin: 10px 0 0;
+      margin: .5rem 0 0;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -93,13 +130,18 @@
       }
 
       a, button {
-        padding: 10px;
+        padding: .5rem;
         color: #000;
         font-family: "Roboto", sans-serif;
-        font-size: 1.2rem;
+        font-size: 1rem;
         text-decoration: none;
         display: flex;
         align-items: center;
+
+        &.right-icon svg {
+          margin-right: 0;
+          margin-left: .5rem;
+        }
 
         svg {
           margin-right: .5rem;

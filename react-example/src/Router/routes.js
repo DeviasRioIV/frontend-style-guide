@@ -1,5 +1,9 @@
 // External modules
 import React from 'react'
+import {
+  FaHome,
+  FaWpforms
+} from 'react-icons/fa'
 
 // Internal modules
 import Home from 'Screens/Home/Home'
@@ -18,6 +22,7 @@ const routes = [
     label: 'Home',
     path: '/',
     component: <Home />,
+    icon: <FaHome />,
     sidebar: true,
     exact: true,
     index: true
@@ -58,32 +63,39 @@ const routes = [
     exact: true
   },
   {
-    label: 'Form',
-    path: '/form',
-    component: <Form />,
-    sidebar: true,
-    exact: true
-  },
-  {
-    label: 'TextInput',
-    path: '/textinput',
-    component: <TextInput />,
-    sidebar: true,
-    exact: true
-  },
-  {
-    label: 'TextArea',
-    path: '/textarea',
-    component: <TextArea />,
-    sidebar: true,
-    exact: true
-  },
-  {
-    label: 'RadioInput',
-    path: '/radioinput',
-    component: <RadioInput />,
-    sidebar: true,
-    exact: true
+    name: 'Forms',
+    icon: <FaWpforms />,
+    routes: [
+      {
+        label: 'Form',
+        path: '/form',
+        component: <Form />,
+        sidebar: true,
+        exact: true
+      },
+      {
+        label: 'TextInput',
+        path: '/textinput',
+        component: <TextInput />,
+        sidebar: true,
+        exact: true
+      },
+      {
+        label: 'TextArea',
+        path: '/textarea',
+        component: <TextArea />,
+        sidebar: true,
+        exact: true
+      },
+      {
+        label: 'RadioInput',
+        path: '/radioinput',
+        component: <RadioInput />,
+        sidebar: true,
+        exact: true
+      }
+    ],
+    sidebar: true
   }
 ]
 

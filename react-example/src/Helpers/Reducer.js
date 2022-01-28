@@ -1,15 +1,15 @@
-const initialState = {};
+const initialState = {}
 
-export const reducer = [reduce, initialState];
+export const reducer = [reduce, initialState]
 
-function reduce(prevState, action) {
+function reduce (prevState, action) {
 
   switch (action.type) {
 
-    case "BOOTSTRAP":
+    case 'BOOTSTRAP':
       return {
         ...prevState,
         ...action.data
-      };
+      }
   }
 }

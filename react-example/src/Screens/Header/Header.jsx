@@ -35,16 +35,6 @@ export default function HeaderDocs () {
         </li>
 
         <li>
-          <strong>backgroundColor</strong>
-          <br />
-          <i>string | optional</i>
-          <br />
-          <p>
-            Sets the background color for the header
-          </p>
-        </li>
-
-        <li>
           <strong>burgerMenu</strong>
           <br />
           <i>bool | optional</i>
@@ -91,26 +81,6 @@ export default function HeaderDocs () {
   ]
 `}
           </pre>
-        </li>
-
-        <li>
-          <strong>linkColor</strong>
-          <br />
-          <i>string (hex|rgba) | optional</i>
-          <br />
-          <p>
-            Specifies the color of a regular link
-          </p>
-        </li>
-
-        <li>
-          <strong>linkActiveColor</strong>
-          <br />
-          <i>string (hex|rgba) | optional</i>
-          <br />
-          <p>
-            Specifies the color of the active link
-          </p>
         </li>
 
         <li>
@@ -170,6 +140,16 @@ export default function HeaderDocs () {
           <br />
           <p>
             Sticks the header to the top of the screen
+          </p>
+        </li>
+
+        <li>
+          <strong>sidebar</strong>
+          <br />
+          <i>bool | optional</i>
+          <br />
+          <p>
+            Renderizes the sidebar
           </p>
         </li>
       </ul>
