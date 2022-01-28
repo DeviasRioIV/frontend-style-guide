@@ -8,7 +8,7 @@ module.exports = new BrowserSyncPlugin({
 
   host  : 'localhost',
 
-  port  : config.browserSync.port,
+  port  : 8007,
 
   proxy: 'localhost:3000',
 
