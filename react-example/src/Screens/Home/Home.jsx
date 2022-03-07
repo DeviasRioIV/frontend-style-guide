@@ -1,32 +1,16 @@
 // External modules
 import React from 'react'
 
-export default function Home () {
+// Internal modules
+import './Home.less'
+
+export default function ButtonDocs () {
 
   return (
-    <div>
-      <h1>Home</h1>
-
-      <h4>Componentes que faltan:</h4>
-
-      <ul>
-        <li>Alertas</li>
-        <li>Loading</li>
-        <li>Loader</li>
-        <li>Table</li>
-        <li>Tabs</li>
-        <li>Checkbox</li>
-        <li>Account (for header)</li>
-      </ul>
-
-      <h4>Para analizar:</h4>
-
-      <ul>
-        <li>Componente Carro</li>
-        <li>Componente Menú (para sidebar y header)</li>
-        <li>Button dropdown</li>
-        <li>Acordion</li>
-      </ul>
+    <div id='home-container'>
+      <h1>
+        This is the home page
+      </h1>
     </div>
   )
 }

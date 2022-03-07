@@ -2,14 +2,14 @@
 import React from 'react'
 
 // Internal modules
-// import serverMock from './Helpers/Mock/Mock.js'
-import { AppProvider } from './Helpers/Context.jsx'
-import { reducer } from './Helpers/Reducer.js'
+import serverMock from './Helpers/Mock/Mock.js'
+import { AppProvider } from './App.Context.jsx'
+import { reducer } from './App.Reducer.js'
 import Router from './Router/Router'
 import './Less/config.less'
 
 // Start mock
-// serverMock()
+serverMock()
 
 export default function App () {
 

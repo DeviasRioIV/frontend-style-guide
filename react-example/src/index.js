@@ -5,7 +5,7 @@ import 'regenerator-runtime/runtime.js'
 
 // Internal modules
 import 'normalize.css'
-import App from './App.jsx'
+import App from './App'
 
 render(
   <App />,

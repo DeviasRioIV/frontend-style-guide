@@ -1,20 +1,20 @@
-import bootstrap from "./models/bootstrap.json";
+import login from './models/login.json'
 
 export default function Mock() {
 
   window.fetch = function (url, content) {
 
-    console.log(url, content);
+    console.log(url, content)
 
     // Switch endpoint
     switch (url) {
 
-      case "bootstrap":
-        return promise(bootstrap, content);
+      case 'login':
+        return promise(login, content)
 
         default:
         // pass through any requests not handled above
-        return fetch(url, content).then(response => resolve(response));
+        return fetch(url, content).then(response => resolve(response))
     }
   }
 
@@ -25,16 +25,16 @@ export default function Mock() {
       // Declare response
       let response = {
         ok: false
-      };
+      }
 
       // Get payload from request, use them to resolve/throw errors
-      let payload = content.body;
+      let payload = content.body
 
-      if (content.method == "GET" || payload) {
+      if (content.method == 'GET' || payload) {
 
         // Declare response
-        response.ok = true;
-        response.body = model;
+        response.ok = true
+        response.body = model
 
       }
 
@@ -44,13 +44,13 @@ export default function Mock() {
         // Resolve
         setTimeout(() => {
           resolve({ ok: true, json: () => Promise.resolve(response.body) })
-        }, 1500);
+        }, 1500)
 
       } else {
 
         // Throw error
-        return reject('Request was not good');
+        return reject('Request was not good')
       }
-    });
+    })
   }
 }

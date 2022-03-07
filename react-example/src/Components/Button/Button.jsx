@@ -2,21 +2,13 @@
 import React from 'react'
 
 // Internal modules
+import './Button.less'
 
-export default function Button () {
-
-  // Local state
-  const [loading, setLoading] = React.useState(true)
-
-  // Mount effect
-  React.useEffect(() => {}, [])
-
-  // Methods
-  const method = () => {}
+export default function Button ({ content }) {
 
   return (
-    <div>
-
-    </div>
+    <button className='main-btn'>
+      {content}
+    </button>
   )
 }

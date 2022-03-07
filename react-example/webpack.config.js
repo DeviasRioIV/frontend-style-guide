@@ -114,7 +114,8 @@ module.exports = {
       Components: path.resolve(__dirname, 'src/Components/'),
       Screens: path.resolve(__dirname, 'src/Screens/'),
       Less: path.resolve(__dirname, 'src/Less/'),
-      Router: path.resolve(__dirname, 'src/Router/')
+      Router: path.resolve(__dirname, 'src/Router/'),
+      Context: path.resolve(__dirname, 'src/App.Context.jsx')
     },
     extensions: ['.js', '.jsx', '.less', '...']
   },
