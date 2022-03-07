@@ -2,47 +2,53 @@
 import React from 'react'
 import { FaCaretDown } from 'react-icons/fa'
 
+// Internal modules
+import './Dropdown.less'
+
+// Components
+import Chips from 'Components/Chips/Chips'
+
 export default function Dropdown (props) {
 
   // Extract props
   const {
-    placeholder,
-    initialVal,
-    defaulter,
+    handler,
+    multiValue,
     options,
-    labelKey,
-    valueKey,
-    value,
-    handler
+    placeholder,
+    searchable,
+    value
   } = props
 
   // Local state
-  const [selection, setSelection] = React.useState('')
+  const [selection, setSelection] = React.useState([])
+  const [searchVal, setSearchVal] = React.useState('')
   const [isOpen, setIsOpen]       = React.useState(false)
-  const [defaultVal, setDefaultVal] = React.useState({})
 
   // Render effect
   React.useEffect(() => {
 
-    defaultVal[labelKey] = placeholder
-    setDefaultVal(defaultVal)
-    setSelection(defaultVal)
+    // Check placeholder
+    if (placeholder) {
 
-  }, [])
+      if (value) {
+        pick(value)
+      } else {
+        pick(-1)
+      }
 
-  // Render effect initialVal
-  React.useEffect(() => {
-
-    if (initialVal !== null && initialVal !== undefined && selection !== initialVal) {
-      pick(initialVal)
+    } else if (value) {
+      pick(value)
+    } else {
+      // Value is requiered
     }
 
-  }, [initialVal])
+  }, [])
 
   // Window click
   React.useEffect(() => {
 
-    if (isOpen) {
+    if (isOpen && !multiValue) {
       window.addEventListener('click', handleOpen)
     }
 
@@ -52,85 +58,118 @@ export default function Dropdown (props) {
     }
   }, [isOpen])
 
-  // Value effect
-  React.useEffect(() => {
-
-    if (value !== selection[valueKey]) {
-
-      const index = options.map(x => x[valueKey]).indexOf(parseInt(value))
-
-      if (index > -1) {
-        const newSelection = options[index]
-        setSelection(newSelection)
-      }
-    }
-  }, [value])
-
   // Methods
-  const pick = newVal => {
+  const pick = value => {
+
+    // Disallow placeholder selection for multivalue
+    if (value === -1 && multiValue) return
+
+    // Declare new value
+    let newVal
 
     // Placeholder case
-    if (newVal === -1) {
-      newVal = {}
-      newVal[labelKey] = placeholder
-      newVal[valueKey] = -1
+    if (value === -1) {
+      newVal = [{
+        label: placeholder,
+        value: -1
+      }]
+    } else if (value !== -1) {
+
+      const match = options.filter(o => o.value === value)
+
+      if (multiValue) {
+        newVal = [...selection, ...match]
+      } else {
+        newVal = match
+      }
     }
 
+    // Update value
     setSelection(newVal)
 
-    handler(newVal[valueKey])
+    // Call handler
+    handler(newVal)
 
-    setIsOpen(false)
+    // Close dropdown if multiValue is not enabled
+    if (!multiValue) {
+      setIsOpen(false)
+    }
+  }
+
+  const unPick = value => {
+    const index = selection.map(o => o.value).indexOf(value)
+    selection.splice(index, 1)
+  }
+
+  const filterMultival = option => {
+    return !multiValue || !selection.map(x => x.value).includes(option.value)
+  }
+
+  const filterSearch = option => {
+    return !searchable || searchVal.includes(option.label)
   }
 
   return (
     <div className='dropdown'>
 
+      {/* Button */}
       <button
         className={`
           dropdown-toggle
-          ${selection[labelKey] !== placeholder ? 'selected' : ''}
+          ${selection.length > 0 && selection[0].value !== -1 ? 'selected' : ''}
           ${isOpen ? 'open' : ''}
         `}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {selection[labelKey]} <FaCaretDown />
+        {/* Single value */}
+        {
+          !multiValue && selection.map(o => o.label)
+        }
+
+        {/* Multiple values with selection */}
+        {
+          multiValue && selection.map((o, index) => (
+            <Chips
+              key={index}
+              label={o.label}
+              value={o.value}
+              onClose={unPick}
+            />
+          ))
+        }
+        <FaCaretDown />
       </button>
 
+      {/* Options list */}
       <ol
         className={`dropdown-list ${isOpen ? 'open' : ''}`}
       >
 
+        {/* Placeholder option */}
         {
-          defaulter &&
+          placeholder &&
             <li
-              className={selection === -1 ? 'active' : ''}
-              onClick={() => pick(-1)}
-            >
-              {defaulter}
-            </li>
-        }
-
-        {
-          !defaulter &&
-            <li
-              className={selection === -1 ? 'active' : ''}
+              className={selection.value === -1 ? 'active' : ''}
               onClick={() => pick(-1)}
             >
               {placeholder}
             </li>
         }
 
+        {/* Options list */}
         {
-          options.map((option, index) => (
-            <li
-              key={index}
-              onClick={() => pick(option)}
-              className={selection[valueKey] === option[valueKey] ? 'active' : ''}
-            >
-              {option[labelKey]}
-            </li>
-          ))
+          options
+            .filter(filterMultival)
+            .filter(filterSearch)
+            .map((option, index) => (
+              <li
+                key={index}
+                onClick={() => pick(option.value)}
+                className={selection.value === option.value ? 'active' : ''}
+              >
+                {option.label}
+              </li>
+            ))
         }
       </ol>
     </div>

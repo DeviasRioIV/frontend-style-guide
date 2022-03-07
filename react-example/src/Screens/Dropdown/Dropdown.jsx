@@ -1,7 +1,8 @@
 // External modules
 import React from 'react'
 
-// Internal modules
+// Components
+import Dropdown from 'Components/Dropdown/Dropdown'
 
 export default function DropdownDocs () {
 
@@ -10,14 +11,12 @@ export default function DropdownDocs () {
 
       <h1>Dropdown Docs:</h1>
 
-      <strong>Lo trae @agus de recuperos</strong>
-
       <h4>Features:</h4>
 
       <ul>
 
         <li>
-          Recibe un placeholder
+          ✓ Recibe un placeholder
         </li>
 
         <li>
@@ -29,7 +28,7 @@ export default function DropdownDocs () {
         </li>
 
         <li>
-          Recibe un valor inicial
+          Recibe un valor
         </li>
 
         <li>
@@ -56,6 +55,58 @@ export default function DropdownDocs () {
           Disabled/enabled/loader
         </li>
       </ul>
+
+      <h4>TODOS:</h4>
+
+      <ul>
+        <li>
+          Handle placeholder for multivalue
+        </li>
+        <li>
+          Javascript set
+        </li>
+      </ul>
+
+      <h4>Regular:</h4>
+
+      {/* Countries dropdown sample */}
+      <Dropdown
+        handler={() => {}}
+        options={[
+          {
+            label: 'Argentina',
+            value: 1
+          },
+          {
+            label: 'Uruguay',
+            value: 2
+          }
+        ]}
+        placeholder='Sample'
+        searchable={false}
+        value={1}
+      />
+
+      <h4>Multi value:</h4>
+
+      {/* Countries dropdown sample */}
+      <Dropdown
+        handler={() => {}}
+        multiValue
+        options={[
+          {
+            label: 'Argentina',
+            value: 1
+          },
+          {
+            label: 'Uruguay',
+            value: 2
+          }
+        ]}
+        placeholder='Sample'
+        searchable={false}
+        value={1}
+      />
     </div>
   )
 }
