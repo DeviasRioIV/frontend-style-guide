@@ -15,9 +15,9 @@ export default async function loginService (body) {
 
   const response = await fetch(`login`, requestOptions)
 
-  const json = response.json()
+  const json = await response.json()
 
-  if (response.status === 200) {
+  if (json.status === 200) {
     success = true
     data = json
   } else if (json.error) {
