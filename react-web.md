@@ -41,7 +41,7 @@
     --RouterHandler.jsx
     --routes.js
 
-  ./_less
+  ./Less
     --/Concept
       --_concept.less
     --config.less
@@ -63,7 +63,7 @@ It's made from these categories:
 
 * <b>./Router</b> Contains the routes definition and their handler.
 
-* <b>./_less</b> Contains the less config files.
+* <b>./Less</b> Contains the less config files.
 
 
 Also, note that:
