@@ -4,7 +4,7 @@ import React from 'react'
 // Internal modules
 import './Home.less'
 
-export default function ButtonDocs () {
+export default function Home () {
 
   return (
     <div id='home-container'>
