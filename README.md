@@ -1,4 +1,4 @@
-# react-style-guide
+# frontend-style-guide
 ## Sections
 
 - [Project Structure](#project-structure)
