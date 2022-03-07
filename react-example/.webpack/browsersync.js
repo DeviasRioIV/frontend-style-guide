@@ -8,9 +8,11 @@ module.exports = new BrowserSyncPlugin({
 
   host  : 'localhost',
 
-  port  : config.browserSync.port,
+  port  : 8007,
 
-  proxy : config.browserSync.base,
+  proxy: 'localhost:3000',
+
+  tunnel: true,
 
   open  : config.browserSync.open,
 
@@ -22,7 +24,7 @@ module.exports = new BrowserSyncPlugin({
     ],
 
     server: {
-      baseDir : [ config.server ]
+      baseDir: ['react-example/dist']
     },
 
     fn: (event, file) => {
