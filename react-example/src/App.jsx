@@ -8,6 +8,7 @@ import { reducer } from './App.Reducer.js'
 import Router from './Router/Router'
 import 'Less/config.less'
 import 'Less/general.less'
+import { LoginProvider } from './Context/index'
 
 // Start mock
 serverMock()
@@ -19,7 +20,9 @@ export default function App () {
 
   return (
     <AppProvider value={{ state, dispatch}}>
-      <Router />
+      <LoginProvider>
+        <Router />
+      </LoginProvider>
     </AppProvider>
   )
 }

@@ -1,35 +1,45 @@
 // External modules
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Internal modules
 import './LoginSuccess.less'
+import { LoginContext } from '../../Context/index' 
 
 // Components
 import LayoutLogin from 'Components/LayoutLogin/LayoutLogin'
-import useLocalStorage from '../../Hooks/useLocalStorage/useLocalStorage'
 
 
 export default function LoginSuccess() {
-
-  const navigate = useNavigate()
-  const {item, saveItems} = useLocalStorage('TOKEN-V1', [])
-
-
-  if(!item.success){
-    navigate('/login')
-  }
+  // Global state
+  const navigate                         = useNavigate()
+  const {save, setSave, item, saveToken} = useContext(LoginContext)
   
+  // Effects
+  useEffect(() => {
+    if(!save.success && !item.success){
 
+      navigate('/login')
+    }
+  }, [item, save])
+
+  // Methods
   const handleLogout = () => {
-    saveItems()
-    navigate('/login')
+
+    if (item.success) {
+
+      saveToken([])
+    }
+    setSave({})
   }
 
   return (
     <LayoutLogin>
+
       <div className='container'>
+
         <div className='login-head'>
+
           <p>
             Success!
           </p>
@@ -38,9 +48,19 @@ export default function LoginSuccess() {
             You are now logged in
           </h1>
         </div>
+
         <div className='login-success'>
-          <p>Your token is <b>fake-auth-token</b></p>
-          <a onClick={handleLogout}>Logout</a>
+
+          <p>Your token is 
+
+            <b>
+              fake-auth-token
+            </b>
+          </p>
+
+          <a onClick={handleLogout}>
+            Logout
+          </a>
         </div>
       </div>
     </LayoutLogin>

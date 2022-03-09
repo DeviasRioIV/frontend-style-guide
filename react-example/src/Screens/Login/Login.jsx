@@ -1,48 +1,69 @@
 // External modules
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { LoginContext } from '../../Context/index' 
 import { useNavigate } from 'react-router-dom'
 
 // Internal modules
 import './Login.less'
 import loginService from './login.service'
-import useLocalStorage from '../../Hooks/useLocalStorage/useLocalStorage'
 
 // Components
 import LayoutLogin from 'Components/LayoutLogin/LayoutLogin'
 
 
 export default function Login() {
-
   // global state
-  const {item, saveItems: saveToken} = useLocalStorage('TOKEN-V1', [])
   const navigate = useNavigate()
+  const {save, setSave, item, saveToken} = useContext(LoginContext)
 
   // Local state
-  const [email, setEmail] = useState('')
+  const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
-  const [camposCompletos, setCamposCompletos] = useState(false)
+  const [load, setLoad]         = useState(false)
+  const [check, setCheck]       = useState(false)
+  const [mensaje, setMensaje]   = useState('')
 
-
+  //efects
   useEffect(() => {
-    if (item.success) {
+    if (save.success) {
+      if (check) {
+        saveToken(save)
+      }
       navigate('/login-success')
     }
-  }, [item])
+    else if (item.success) {
+      navigate('/login-success')
+    }
+  }, [save])
 
 
   // Methods
   const onSubmit = async (event) => {
     event.preventDefault()
+    setLoad(true)
     if(email.includes('@') && password.length >= 4 && email.length >= 4){
 
       const response = await loginService({
         email: email,
         password: password
       })
-  
-      saveToken(response)
+
+      setSave(response)
+
     }
-    setCamposCompletos(true)
+
+    setLoad(false)
+
+    if (!email.includes('@')) {
+
+      setMensaje('The email entered does not contain @')
+    } else if (password.length <= 4) {
+
+      setMensaje('The password must have a minimum of 4 characters')
+    } else if (email.length <= 4) {
+
+      setMensaje('very short email')
+    }
   }
 
   const onPassword = (event) => {
@@ -53,12 +74,17 @@ export default function Login() {
     setEmail(event.target.value)
   }
 
+  const handleCheck = () => {
+    setCheck(!check)
+  }
+
   return (
     <LayoutLogin>
+      
       <div className='login-head'>
 
         <p>
-          Welcome back
+          Welcome back {}
         </p>
 
         <h1>
@@ -72,22 +98,52 @@ export default function Login() {
           Email
         </label>
 
-        <input type="email" placeholder='John.snow@gmail.com' value={email} onChange={onEmail}/>
+        <input 
+          type="email" 
+          placeholder='John.snow@gmail.com' 
+          value={email} 
+          onChange={onEmail}
+        />
 
         <label htmlFor="">
           Password
         </label>
 
-        <input type="password" placeholder='*********' value={password} onChange={onPassword}/>
+        <input 
+          type="password" 
+          placeholder='*********' 
+          value={password} 
+          onChange={onPassword}
+        />
 
-        {camposCompletos && <span>Complete adecuadamente los campos</span>}
+        {mensaje != '' && <span>{mensaje}</span>}
         
         <div className='input-remember'>
-          <input type="checkbox"/>
-          <p>Remember me</p>
+
+          <input 
+            type="checkbox" 
+            onClick={handleCheck}
+          />
+
+          <p>
+            Remember me
+          </p>
         </div>
 
-        <button type='submit' className='load' onClick={onSubmit}>Login now</button>
+        <button 
+          className={load ? 'btn-load': ''} 
+          type='submit' 
+          onClick={onSubmit}
+        >
+        {
+          load ? 
+          <img 
+            className='load' 
+            src="https://img.icons8.com/fluency/48/000000/loading-sign.png"
+          />: 
+          'Login now'
+        }
+        </button>
       </form>
     </LayoutLogin>
   )
