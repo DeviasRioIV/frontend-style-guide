@@ -51,11 +51,8 @@ export default function LoginSuccess() {
 
         <div className='login-success'>
 
-          <p>Your token is 
-
-            <b>
-              fake-auth-token
-            </b>
+          <p>
+            Your token is <b>fake-auth-token</b>
           </p>
 
           <a onClick={handleLogout}>
