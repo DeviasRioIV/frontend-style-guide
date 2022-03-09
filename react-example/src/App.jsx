@@ -6,7 +6,8 @@ import serverMock from './Helpers/Mock/Mock.js'
 import { AppProvider } from './App.Context.jsx'
 import { reducer } from './App.Reducer.js'
 import Router from './Router/Router'
-import './Less/config.less'
+import 'Less/config.less'
+import 'Less/general.less'
 
 // Start mock
 serverMock()
@@ -17,7 +18,7 @@ export default function App () {
   const [state, dispatch] = React.useReducer(...reducer)
 
   return (
-    <AppProvider value={{ state, dispatch }}>
+    <AppProvider value={{ state, dispatch}}>
       <Router />
     </AppProvider>
   )

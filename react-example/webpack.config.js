@@ -84,7 +84,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpe?g|gif|png|svg)$/i,
+        test: /\.(jpe?g|gif|png|svg|jpg)$/i,
         use: [
           {
             loader: 'url-loader',
@@ -95,7 +95,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|otf|woff|woff2|eot|ttf|svg)$/,
+        test: /\.(png|otf|woff|woff2|eot|ttf|svg|jpg)$/,
         use: [
           {
             loader: 'url-loader',
@@ -115,7 +115,9 @@ module.exports = {
       Screens: path.resolve(__dirname, 'src/Screens/'),
       Less: path.resolve(__dirname, 'src/Less/'),
       Router: path.resolve(__dirname, 'src/Router/'),
-      Context: path.resolve(__dirname, 'src/App.Context.jsx')
+      Context: path.resolve(__dirname, 'src/App.Context.jsx'),
+      Assets: path.resolve(__dirname, 'src/assets/'),
+      Hooks: path.resolve(__dirname, 'src/Hooks/')
     },
     extensions: ['.js', '.jsx', '.less', '...']
   },
