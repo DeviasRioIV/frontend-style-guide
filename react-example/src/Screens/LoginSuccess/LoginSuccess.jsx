@@ -1,5 +1,5 @@
 // External modules
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Internal modules
@@ -15,13 +15,19 @@ export default function LoginSuccess() {
   const navigate                         = useNavigate()
   const {save, setSave, item, saveToken} = useContext(LoginContext)
   
+  const tokenItem = item.success? item.data.data.token: false
+  const tokenSave = save.success? save.data.data.token: false
+
+
+  
   // Effects
   useEffect(() => {
     if(!save.success && !item.success){
-
       navigate('/login')
     }
+    
   }, [item, save])
+
 
   // Methods
   const handleLogout = () => {
@@ -52,7 +58,7 @@ export default function LoginSuccess() {
         <div className='login-success'>
 
           <p>
-            Your token is <b>fake-auth-token</b>
+            Your token is <b>{tokenItem || tokenSave}</b><b></b>
           </p>
 
           <a onClick={handleLogout}>
