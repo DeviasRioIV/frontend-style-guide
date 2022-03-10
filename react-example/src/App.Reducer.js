@@ -12,5 +12,4 @@ function reduce (prevState, action) {
         ...action.data
       }
   }
-  
 }

@@ -1,27 +1,27 @@
 // External modules
-import React, { useState} from "react"
+import React, { useState } from 'react'
 
 // Internal modules
 import useLocalStorage from '../Hooks/useLocalStorage/useLocalStorage'
 
 // Components
-const LoginContext = React.createContext();
+const LoginContext = React.createContext()
 
-function LoginProvider(props) {
+function LoginProvider (props) {
   const [save, setSave] = useState({})
-  const {item, saveItems: saveToken} = useLocalStorage('TOKEN-V1', []);
+  const { item, saveItems: saveToken } = useLocalStorage('TOKEN-V1', [])
 
-  return(
-    <LoginContext.Provider 
-    value={{
+  return (
+    <LoginContext.Provider value={{
       save,
       setSave,
       item,
       saveToken
-    }}>
+    }}
+    >
       {props.children}
     </LoginContext.Provider>
   )
 }
 
-export { LoginContext, LoginProvider };
+export { LoginContext, LoginProvider }

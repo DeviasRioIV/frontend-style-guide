@@ -19,7 +19,7 @@ export default function App () {
   const [state, dispatch] = React.useReducer(...reducer)
 
   return (
-    <AppProvider value={{ state, dispatch}}>
+    <AppProvider value={{ state, dispatch }}>
       <LoginProvider>
         <Router />
       </LoginProvider>

@@ -11,17 +11,17 @@ import Button from '../../Components/Button/Button'
 // Components
 import LayoutLogin from 'Components/LayoutLogin/LayoutLogin'
 
-export default function Login() {
+export default function Login () {
   // global state
   const navigate = useNavigate()
   const { save, setSave, item, saveToken } = useContext(LoginContext)
 
   // Local state
-  const [email, setEmail] = useState('')
+  const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
-  const [load, setLoad] = useState(false)
-  const [check, setCheck] = useState(false)
-  const [mensaje, setMensaje] = useState('')
+  const [load, setLoad]         = useState(false)
+  const [check, setCheck]       = useState(false)
+  const [mensaje, setMensaje]   = useState('')
 
   // Efects
   useEffect(() => {
@@ -30,8 +30,7 @@ export default function Login() {
         saveToken(save)
       }
       navigate('/login-success')
-    }
-    else if (item.success) {
+    } else if (item.success) {
       navigate('/login-success')
     }
   }, [save])
@@ -121,19 +120,21 @@ export default function Login() {
             Remember me
           </p>
         </div>
+
         <div onClick={onSubmit}>
+
           <Button
             load={load ? 'btn-load' : ''}
             type='submit'
           >
-          {
-            load ?
-            <img
-              className='load'
-              src="https://img.icons8.com/fluency/48/000000/loading-sign.png"
-            /> :
-            'Login now'
-          }
+            {
+            load
+              ? <img
+                  className='load'
+                  src='https://img.icons8.com/fluency/48/000000/loading-sign.png'
+                />
+              : 'Login now'
+            }
           </Button>
         </div>
       </form>

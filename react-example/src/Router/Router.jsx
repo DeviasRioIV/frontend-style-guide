@@ -1,6 +1,6 @@
 // External modules
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // internal modules
 
