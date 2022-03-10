@@ -1,39 +1,33 @@
 // External modules
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Internal modules
 import './LoginSuccess.less'
-import { LoginContext } from '../../Context/index' 
+import { LoginContext } from '../../Context/index'
 
 // Components
 import LayoutLogin from 'Components/LayoutLogin/LayoutLogin'
 
-
-export default function LoginSuccess() {
+export default function LoginSuccess () {
   // Global state
-  const navigate                         = useNavigate()
-  const {save, setSave, item, saveToken} = useContext(LoginContext)
-  
-  const tokenItem = item.success? item.data.data.token: false
-  const tokenSave = save.success? save.data.data.token: false
+  const navigate = useNavigate()
+  const { save, setSave, item, saveToken } = useContext(LoginContext)
 
+  // Constants
+  const tokenItem = item.success ? item.data.data.token : false
+  const tokenSave = save.success ? save.data.data.token : false
 
-  
   // Effects
   useEffect(() => {
-    if(!save.success && !item.success){
+    if (!save.success && !item.success) {
       navigate('/login')
     }
-    
   }, [item, save])
-
 
   // Methods
   const handleLogout = () => {
-
     if (item.success) {
-
       saveToken([])
     }
     setSave({})
@@ -58,7 +52,7 @@ export default function LoginSuccess() {
         <div className='login-success'>
 
           <p>
-            Your token is <b>{tokenItem || tokenSave}</b><b></b>
+            Your token is <b>{tokenItem || tokenSave}</b>
           </p>
 
           <a onClick={handleLogout}>
