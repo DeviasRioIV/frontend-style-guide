@@ -55,7 +55,7 @@ export default function Login () {
     } else if (password.length <= 4) {
       setMensaje('The password must have a minimum of 4 characters')
     } else if (email.length <= 4) {
-      setMensaje('very short email')
+      setMensaje('Very short email')
     }
   }
 

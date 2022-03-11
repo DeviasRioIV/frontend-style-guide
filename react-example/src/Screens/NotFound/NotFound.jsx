@@ -13,7 +13,7 @@ export default function Notfound () {
   return (
     <div className='not-found'>
       <h1>404</h1>
-      <p>Upss! no pudimos encontrar esta pagina</p>
+      <p>Oops! we couldn't find this page</p>
       <div onClick={handleHome} className='container-button'>
         <Button>
           HOME

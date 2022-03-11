@@ -1,6 +1,6 @@
 import login from './models/login.json'
 
-export default function Mock() {
+export default function Mock () {
 
   window.fetch = function (url, content) {
 
@@ -12,25 +12,25 @@ export default function Mock() {
       case 'login':
         return promise(login, content)
 
-        default:
+      default:
         // pass through any requests not handled above
         return fetch(url, content).then(response => resolve(response))
     }
   }
 
-  function promise(model, content) {
+  function promise (model, content) {
 
     return new Promise((resolve, reject) => {
 
       // Declare response
-      let response = {
+      const response = {
         ok: false
       }
 
       // Get payload from request, use them to resolve/throw errors
-      let payload = content.body
+      const payload = content.body
 
-      if (content.method == 'GET' || payload) {
+      if (content.method === 'GET' || payload) {
 
         // Declare response
         response.ok = true

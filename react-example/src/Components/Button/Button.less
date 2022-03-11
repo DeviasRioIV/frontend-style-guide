@@ -1,4 +1,7 @@
-button{
+@import '../../Less/Animations/buttonAnimation.less';
+
+button {
+
   background-color: #04C45C;
   width: 100%;
   margin-top: 28px;
@@ -10,25 +13,23 @@ button{
   line-height: 1.9rem;
   cursor: pointer;
   outline: none;
-}
-button:hover{
-  box-shadow: 0 0 20px rgb(173, 170, 170);
-}
-.btn-load{
-  background-color: #05ac53;
-}
-.load{
-  animation-name: change;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
 
-@keyframes change {
-  0%{
-    transform: rotate(0deg);
+  button:hover{
+
+    box-shadow: 0 0 20px rgb(173, 170, 170);
+
   }
-  100%{
-    transform: rotate(360deg);
+  .btn-load{
+
+    background-color: #05ac53;
+
+  }
+  .load{
+
+    animation-name: change;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
   }
 }

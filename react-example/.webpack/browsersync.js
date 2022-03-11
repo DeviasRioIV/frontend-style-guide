@@ -2,7 +2,7 @@
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 // Internal modules
-const config = require("../src/config-sample.json");
+const config = require("../src/config.json");
 
 module.exports = new BrowserSyncPlugin({
 
@@ -20,8 +20,7 @@ module.exports = new BrowserSyncPlugin({
 
     match: [
       './src/**/*.jsx',
-      './src/**/*.scss',
-      './src/**/*.jpg',
+      './src/**/*.less',
     ],
 
     server: {
