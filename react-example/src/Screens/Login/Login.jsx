@@ -33,7 +33,7 @@ export default function Login () {
     } else if (item.success) {
       navigate('/login-success')
     }
-  }, [save])
+  }, [save, item])
 
   // Methods
   const onSubmit = async (event) => {

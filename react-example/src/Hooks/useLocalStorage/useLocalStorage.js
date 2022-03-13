@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 export default function useLocalStorage (itemName, initialValue) {
   const [error, setError] = useState(false)
-  const [item, setItem] = useState(initialValue)
+  const [item, setItem]   = useState(initialValue)
 
   useEffect(() => {
     try {
