@@ -13,7 +13,7 @@ export default async function loginService (body) {
   let success = false
   let data = { error: 'There was an issue with your request' }
 
-  const response = await fetch('login', requestOptions)
+  const response = await fetch(`login`, requestOptions)
 
   const json = await response.json()
 

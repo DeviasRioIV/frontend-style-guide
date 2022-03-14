@@ -2,12 +2,11 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-// internal modules
-
 // Routes
 import routes from './routes'
 
 export default function Router () {
+
   return (
     <BrowserRouter>
 

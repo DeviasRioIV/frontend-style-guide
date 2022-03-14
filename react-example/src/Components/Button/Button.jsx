@@ -4,10 +4,11 @@ import React from 'react'
 // Internal modules
 import './Button.less'
 
-export default function Button ({ load, type, children }) {
+export default function Button ({ content }) {
+
   return (
-    <button className={load} type={type}>
-      {children}
+    <button className='main-btn'>
+      {content}
     </button>
   )
 }
