@@ -1,10 +1,18 @@
 // External modules
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Internal modules
 import './Header.less'
 
-export default function Button ({ load, type, children }) {
+export default function Header () {
+
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/login')
+  }
+
   return (
 
     <header>
@@ -12,7 +20,7 @@ export default function Button ({ load, type, children }) {
       <nav>
 
         <img src='img/Logotype.png' alt='logo of header' />
-        <a>Login</a>
+        <a onClick={handleClick}>Login</a>
       </nav>
 
       <section style={{ backgroundImage: 'url("img/HeroSection.jpg")' }}>
