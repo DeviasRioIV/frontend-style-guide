@@ -20,7 +20,7 @@ module.exports = new BrowserSyncPlugin({
 
     match: [
       './src/**/*.jsx',
-      './src/**/*.scss'
+      './src/**/*.less',
     ],
 
     server: {
