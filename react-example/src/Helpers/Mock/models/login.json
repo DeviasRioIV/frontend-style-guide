@@ -1,6 +1,6 @@
 {
   "status": 200,
   "data": {
-    "token": "fake-auth-token-ANDRES"
+    "token": "fake-auth-token"
   }
 }
