@@ -1,5 +1,5 @@
 // External modules
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 // Internal modules
 import './Carousel.less'
@@ -8,32 +8,8 @@ export default function Carrousel () {
 
   // Local state
   const sliderShow = useRef(null)
-  // const intervalSlider = useRef(null)
   const [pointSlider, setPointSlider] = useState(0)
 
-  // Efects
-  useEffect(() => {
-
-    setTimeout(() => {
-      next()
-    }, 5000)
-
-    // intervalSlider.current = setInterval(() => {
-    //   next()
-    // }, 4000)
-
-    // sliderShow.current.addEventListener('mouseenter', () => {
-    //   clearInterval(intervalSlider.current)
-    // })
-
-    // sliderShow.current.addEventListener('mouseleave', () => {
-    //   intervalSlider.current = setInterval(() => {
-    //     next()
-    //   }, 4000)
-    // })
-  }, [pointSlider])
-
-  // Methods
   const next = () => {
     if (sliderShow.current.children.length > 0) {
 

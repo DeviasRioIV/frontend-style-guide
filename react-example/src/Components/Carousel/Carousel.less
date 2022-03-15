@@ -82,8 +82,6 @@
 
     .arrow-left {
 
-      width: 100px;
-      height: 100px;
       position: absolute;
       top: -50vh;
       left: 40px;
@@ -92,8 +90,6 @@
     
     .arrow-right {
 
-      width: 100px;
-      height: 100px;
       position: absolute;
       top: -50vh;
       right: 40px;
@@ -112,8 +108,105 @@
 
       span{
 
-        width: 25px;
-        height: 25px;
+        img{
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  
+  .carousel {
+  
+    .container-sliders {
+        
+      .slider {
+  
+        .texto-slide {
+          padding: 0 20px;
+
+          .home-title {
+  
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 3rem;
+            letter-spacing: 0.2em;
+            color: #282825;
+            margin: 0;
+            margin-top: 5%;
+          }
+  
+          .home-subtitle {
+  
+            font-family: 'Merriweather';
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 4rem;
+            color: #282825;
+            margin: 30px 0 8px 0;
+          }
+  
+          .home-description {
+  
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 3.5rem;
+            color: #282825;
+            margin: 0;
+          }
+  
+          .see-more-button {
+  
+            width: 188px;
+            height: 60px;
+            background-color: #FFB338;
+            border-radius: 30px;
+            margin: 0;
+            margin-top: 32px;
+            color: #181813;
+          }
+        }
+      }
+    }
+    .controles {
+  
+      .arrow-left {
+        
+        top: -82.5px;
+
+        img {
+
+          width: 50px;
+          height: 50px;
+        }
+      }
+      
+      .arrow-right {
+
+        top: -82.5px;
+
+        img {
+
+          width: 50px;
+          height: 50px;
+        }
+      }
+  
+      .container-ellipse {
+  
+        width: 100px;
+        left: calc(50% - 50px);
+  
+        span{
+          
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
       }
     }
   }

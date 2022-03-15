@@ -94,3 +94,31 @@ footer {
     }
 
 }
+
+@media (max-width: 700px) {
+  footer {
+
+    grid-template: 1fr 1fr / 1fr;
+  
+      .footer-up {
+  
+        width: 100%;
+        display: grid;
+        grid-template: 1fr 1fr / 1fr;
+        place-items: center;
+        border-bottom: 2px solid #EDEDED;
+        
+  
+        .footer-up-text {
+  
+          flex-direction: column;
+          border: none;
+        }
+      }
+  
+      .footer-down {
+  
+        flex-direction: column;
+      }
+  }
+}

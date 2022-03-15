@@ -21,7 +21,7 @@ export default function Header () {
 
       <nav>
 
-        <img src='img/Logotype.png' alt='logo of header' />
+        <img src='img/Logotype.svg' alt='logo of header' />
         <a onClick={handleClick}>Login</a>
       </nav>
 

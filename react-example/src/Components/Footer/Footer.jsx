@@ -38,7 +38,7 @@ export default function Home () {
       <section className='footer-down'>
 
         <p>TERMS & CODITION POLICY</p>
-        <img src='img/logoFooter.png' alt='Logo' />
+        <img src='img/logoFooter.svg' alt='Logo' />
         <p className='register'>© 2019 Bamboo All Rights Reserved</p>
 
       </section>
