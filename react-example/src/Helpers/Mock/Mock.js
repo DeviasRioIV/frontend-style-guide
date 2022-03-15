@@ -43,13 +43,14 @@ export default function Mock () {
 
         // Resolve
         setTimeout(() => {
-          resolve({ ok: true, json: () => Promise.resolve(response.body) })
+          resolve({ ok: true, json: () => resolve(response.body) })
         }, 1500)
 
       } else {
 
         // Throw error
-        return reject('Request was not good')
+        const error = new Error('Request was not good')
+        return reject(error)
       }
     })
   }
