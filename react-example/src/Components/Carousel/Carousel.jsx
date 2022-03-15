@@ -6,10 +6,34 @@ import './Carousel.less'
 
 export default function Carrousel () {
 
+  // Local state
   const sliderShow = useRef(null)
   // const intervalSlider = useRef(null)
   const [pointSlider, setPointSlider] = useState(0)
 
+  // Efects
+  useEffect(() => {
+
+    setTimeout(() => {
+      next()
+    }, 5000)
+
+    // intervalSlider.current = setInterval(() => {
+    //   next()
+    // }, 4000)
+
+    // sliderShow.current.addEventListener('mouseenter', () => {
+    //   clearInterval(intervalSlider.current)
+    // })
+
+    // sliderShow.current.addEventListener('mouseleave', () => {
+    //   intervalSlider.current = setInterval(() => {
+    //     next()
+    //   }, 4000)
+    // })
+  }, [pointSlider])
+
+  // Methods
   const next = () => {
     if (sliderShow.current.children.length > 0) {
 
@@ -18,7 +42,7 @@ export default function Carrousel () {
       const firstElement = sliderShow.current.children[0]
       const widthSlide = sliderShow.current.children[0].offsetWidth
 
-      sliderShow.current.style.transition = '300ms ease-out all'
+      sliderShow.current.style.transition = '500ms ease-out all'
       sliderShow.current.style.transform = `translateX(-${widthSlide}px)`
 
       if (pointSlider === 3) {
@@ -58,32 +82,11 @@ export default function Carrousel () {
       }
 
       setTimeout(() => {
-        sliderShow.current.style.transition = '300ms ease-out all'
+        sliderShow.current.style.transition = '500ms ease-out all'
         sliderShow.current.style.transform = 'translateX(0)'
       }, 30)
     }
   }
-
-  useEffect(() => {
-
-    setTimeout(() => {
-      next()
-    }, 5000)
-
-    // intervalSlider.current = setInterval(() => {
-    //   next()
-    // }, 4000)
-
-    // sliderShow.current.addEventListener('mouseenter', () => {
-    //   clearInterval(intervalSlider.current)
-    // })
-
-    // sliderShow.current.addEventListener('mouseleave', () => {
-    //   intervalSlider.current = setInterval(() => {
-    //     next()
-    //   }, 4000)
-    // })
-  }, [pointSlider])
 
   return (
     <div className='carousel'>

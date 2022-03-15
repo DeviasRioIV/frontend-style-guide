@@ -10,6 +10,7 @@ export default function Header () {
 
   const navigate = useNavigate()
 
+  // Methods
   const handleClick = () => {
     navigate('/login')
   }
