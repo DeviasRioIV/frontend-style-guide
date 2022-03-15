@@ -1,0 +1,120 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+
+  .container-sliders {
+
+    display: flex;
+    flex-wrap: nowrap;
+      
+    .slider {
+
+      min-width: 100%;
+      overflow: hidden;
+      transition: .3s ease all;
+      z-index: 10;
+      position: relative;
+
+      .img-carousel {
+
+        min-width: 100%;
+        height: 100vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .texto-slide {
+
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 15%;
+
+        .home-title {
+
+          font-size: 2.4rem;
+          font-weight: bold;
+          line-height: 3.5rem;
+          letter-spacing: 0.2em;
+          color: #282825;
+          margin: 0;
+          margin-top: 5%;
+        }
+
+        .home-subtitle {
+
+          font-family: 'Merriweather';
+          font-size: 4.2rem;
+          font-weight: 400;
+          line-height: 6.5rem;
+          color: #282825;
+          margin: 30px 0 8px 0;
+        }
+
+        .home-description {
+
+          font-size: 2.4rem;
+          font-weight: 400;
+          line-height: 3.5rem;
+          color: #282825;
+          margin: 0;
+        }
+
+        .see-more-button {
+
+          width: 188px;
+          height: 60px;
+          background-color: #FFB338;
+          border-radius: 30px;
+          margin: 0;
+          margin-top: 32px;
+          color: #181813;
+        }
+      }
+    }
+  }
+  .controles {
+
+    width: 100%;
+    position: relative;
+    z-index: 20;
+
+    .arrow-left {
+
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: -50vh;
+      left: 40px;
+      cursor: pointer;
+    }
+    
+    .arrow-right {
+
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: -50vh;
+      right: 40px;
+      transform: rotate(180deg);
+      cursor: pointer;
+    }
+
+    .container-ellipse {
+
+      display: flex;
+      justify-content: space-between;
+      width: 160px;
+      position: absolute;
+      top: -70px;
+      left: calc(50% - 80px);
+
+      span{
+
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}

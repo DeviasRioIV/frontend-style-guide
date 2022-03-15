@@ -22,6 +22,16 @@ export default function Home () {
           <img src='img/Rectangle1.jpg' alt='imagen 1/3' />
           <img src='img/Rectangle2.jpg' alt='imagen 2/3' />
           <img src='img/Rectangle3.jpg' alt='imagen 3/3' />
+          <img src='img/Rectangle1.jpg' alt='imagen 1/3' />
+          <img src='img/Rectangle2.jpg' alt='imagen 2/3' />
+          <img src='img/Rectangle3.jpg' alt='imagen 3/3' />
+          <img src='img/Rectangle1.jpg' alt='imagen 1/3' />
+          <img src='img/Rectangle2.jpg' alt='imagen 2/3' />
+          <img src='img/Rectangle3.jpg' alt='imagen 3/3' />
+          <img src='img/Rectangle1.jpg' alt='imagen 1/3' />
+          <img src='img/Rectangle2.jpg' alt='imagen 2/3' />
+          <img src='img/Rectangle3.jpg' alt='imagen 3/3' />
+
         </section>
 
         <div className='scroll-img'>
