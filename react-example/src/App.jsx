@@ -17,6 +17,18 @@ export default function App () {
   // Declare reducer
   const [state, dispatch] = React.useReducer(...reducer)
 
+  // Mount effect
+  React.useEffect(() => {
+
+    const remember = localStorage.getItem('remember')
+
+    dispatch({
+      type: 'UPDATE_REMEMBER',
+      data: remember
+    })
+
+  }, [])
+
   return (
     <AppProvider value={{ state, dispatch }}>
       <LoginProvider>

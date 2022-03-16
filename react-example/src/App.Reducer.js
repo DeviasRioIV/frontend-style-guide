@@ -1,4 +1,7 @@
-const initialState = {}
+const initialState = {
+  remember: null,
+  token: 'token is...'
+}
 
 export const reducer = [reduce, initialState]
 
@@ -6,10 +9,10 @@ function reduce (prevState, action) {
 
   switch (action.type) {
 
-    case 'BOOTSTRAP':
+    case 'UPDATE_REMEMBER':
       return {
         ...prevState,
-        ...action.data
+        remember: action.data
       }
   }
 }

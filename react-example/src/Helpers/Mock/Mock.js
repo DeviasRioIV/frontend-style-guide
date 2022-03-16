@@ -43,7 +43,7 @@ export default function Mock () {
 
         // Resolve
         setTimeout(() => {
-          resolve({ ok: true, json: () => resolve(response.body) })
+          resolve({ ok: true, json: () => Promise.resolve(response.body) })
         }, 1500)
 
       } else {

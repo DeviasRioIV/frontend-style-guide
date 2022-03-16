@@ -2,5 +2,6 @@
   "status": 200,
   "data": {
     "token": "fake-auth-token-ANDRES"
-  }
+  },
+  "error": "Your credentials are wrong"
 }

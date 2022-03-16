@@ -1,13 +1,14 @@
 // External modules
 import React from 'react'
-import { LoginContext } from '../../Context/index'
 import { useNavigate } from 'react-router-dom'
 import { FaCircleNotch } from 'react-icons/fa'
 
 // Internal modules
 import './Login.less'
 import loginService from './login.service'
-import Button from '../../Components/Button/Button'
+import { LoginContext } from '../../Context/index'
+import Button from 'Components/Button/Button'
+import { AppContext } from 'Context'
 
 // Components
 import LayoutLogin from 'Components/LayoutLogin/LayoutLogin'
@@ -17,6 +18,7 @@ export default function Login () {
   // Global state
   const navigate = useNavigate()
   const { save, setSave, item, saveToken } = React.useContext(LoginContext)
+  const { dispatch } = React.useContext(AppContext)
 
   // Local state
   const [email, setEmail]       = React.useState('')
@@ -50,12 +52,31 @@ export default function Login () {
     setLoad(true)
 
     if (email.includes('@') && password.length >= 4 && email.length >= 4) {
-      const response = await loginService({
+
+      const body = {
         email: email,
         password: password
-      })
+      }
 
-      setSave(response)
+      const response = await loginService(body)
+
+      if (response.success && response.data) {
+
+        // Save in context
+        setSave(response)
+
+        dispatch({
+          type: 'UPDATE_REMEMBER',
+          data: response.data.data
+        })
+
+        localStorage.setItem('remember', JSON.stringify(response.data.data))
+
+      } else if (response.data.error) {
+        setMessage(response.data.error)
+      } else {
+        setMessage('Something went wrong')
+      }
     }
 
     setLoad(false)
