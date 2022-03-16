@@ -1,12 +1,19 @@
-import { useState, useEffect } from 'react'
+// External modules
+import React from 'react'
 
 export default function useLocalStorage (itemName, initialValue) {
-  const [error, setError] = useState(false)
-  const [item, setItem]   = useState(initialValue)
 
-  useEffect(() => {
+  // Local state
+  const [error, setError] = React.useState(false)
+  const [item, setItem]   = React.useState(initialValue)
+
+  // Mount effect
+  React.useEffect(() => {
+
     try {
+
       const localStorageItem = localStorage.getItem(itemName)
+
       let parsedItem
 
       if (!localStorageItem) {
@@ -17,11 +24,14 @@ export default function useLocalStorage (itemName, initialValue) {
       }
 
       setItem(parsedItem)
+
     } catch (error) {
       setError(error)
     }
+
   }, [])
 
+  // Methods
   const saveItems = newItem => {
     try {
       const stringifiedItem = JSON.stringify(newItem)

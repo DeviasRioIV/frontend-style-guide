@@ -9,7 +9,7 @@ export default function LayoutLogin ({ children }) {
     <main>
 
       <section
-        style={{ backgroundImage: 'url("img/bgLogin.jpg")' }}
+        style={{ backgroundImage: 'url("img/bg.png")' }}
         className='layout-img'
       />
 

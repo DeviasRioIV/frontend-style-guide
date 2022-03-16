@@ -1,61 +1,92 @@
 // External modules
-import React, { useEffect, useState, useContext } from 'react'
-import { LoginContext } from '../../Context/index'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FaCircleNotch } from 'react-icons/fa'
 
 // Internal modules
 import './Login.less'
 import loginService from './login.service'
-import Button from '../../Components/Button/Button'
+import { LoginContext } from '../../Context/index'
+import Button from 'Components/Button/Button'
+import { AppContext } from 'Context'
 
 // Components
 import LayoutLogin from 'Components/LayoutLogin/LayoutLogin'
 
 export default function Login () {
-  // global state
+
+  // Global state
   const navigate = useNavigate()
-  const { save, setSave, item, saveToken } = useContext(LoginContext)
+  const { save, setSave, item, saveToken } = React.useContext(LoginContext)
+  const { dispatch } = React.useContext(AppContext)
 
   // Local state
-  const [email, setEmail]       = useState('')
-  const [password, setPassword] = useState('')
-  const [load, setLoad]         = useState(false)
-  const [check, setCheck]       = useState(false)
-  const [mensaje, setMensaje]   = useState('')
+  const [email, setEmail]       = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const [load, setLoad]         = React.useState(false)
+  const [check, setCheck]       = React.useState(false)
+  const [message, setMessage]   = React.useState('')
 
-  // Efects
-  useEffect(() => {
+  // Save and item effect
+  React.useEffect(() => {
+
     if (save.success) {
+
       if (check) {
         saveToken(save)
       }
+
       navigate('/login-success')
+
     } else if (item.success) {
       navigate('/login-success')
     }
+
   }, [save, item])
 
   // Methods
   const onSubmit = async (event) => {
+
     event.preventDefault()
+
     setLoad(true)
+
     if (email.includes('@') && password.length >= 4 && email.length >= 4) {
-      const response = await loginService({
+
+      const body = {
         email: email,
         password: password
-      })
+      }
 
-      setSave(response)
+      const response = await loginService(body)
+
+      if (response.success && response.data) {
+
+        // Save in context
+        setSave(response)
+
+        dispatch({
+          type: 'UPDATE_REMEMBER',
+          data: response.data.data
+        })
+
+        localStorage.setItem('remember', JSON.stringify(response.data.data))
+
+      } else if (response.data.error) {
+        setMessage(response.data.error)
+      } else {
+        setMessage('Something went wrong')
+      }
     }
 
     setLoad(false)
 
     if (!email.includes('@')) {
-      setMensaje('The email entered does not contain @')
+      setMessage('The email entered does not contain @')
     } else if (password.length <= 4) {
-      setMensaje('The password must have a minimum of 4 characters')
+      setMessage('The password must have a minimum of 4 characters')
     } else if (email.length <= 4) {
-      setMensaje('Very short email')
+      setMessage('Very short email')
     }
   }
 
@@ -108,7 +139,7 @@ export default function Login () {
           onChange={onPassword}
         />
 
-        {mensaje !== '' && <span>{mensaje}</span>}
+        {message !== '' && <span>{message}</span>}
         <div className='input-remember'>
 
           <input
@@ -127,14 +158,12 @@ export default function Login () {
             load={load ? 'btn-load' : ''}
             type='submit'
           >
-            {
-            load
-              ? <img
-                  className='load'
-                  src='https://img.icons8.com/fluency/48/000000/loading-sign.png'
-                />
-              : 'Login now'
-            }
+
+            Login now
+
+            <div className='spinner'>
+              <FaCircleNotch />
+            </div>
           </Button>
         </div>
       </form>

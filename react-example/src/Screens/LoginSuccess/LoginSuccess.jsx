@@ -5,14 +5,17 @@ import { useNavigate } from 'react-router-dom'
 // Internal modules
 import './LoginSuccess.less'
 import { LoginContext } from '../../Context/index'
+import { AppContext } from 'Context'
 
 // Components
 import LayoutLogin from 'Components/LayoutLogin/LayoutLogin'
 
 export default function LoginSuccess () {
+
   // Global state
   const navigate = useNavigate()
   const { save, setSave, item, saveToken } = useContext(LoginContext)
+  const { state } = React.useContext(AppContext)
 
   // Constants
   const tokenItem = item.success ? item.data.data.token : false
@@ -53,6 +56,14 @@ export default function LoginSuccess () {
 
           <p>
             Your token is <b>{tokenItem || tokenSave}</b>
+          </p>
+
+          <p>
+            Saved by context {state.remember}
+          </p>
+
+          <p>
+            Saved by context {state.token}
           </p>
 
           <a onClick={handleLogout}>

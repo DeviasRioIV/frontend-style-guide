@@ -2,6 +2,8 @@ import login from './models/login.json'
 
 export default function Mock () {
 
+  const oldFetch = window.fetch
+
   window.fetch = function (url, content) {
 
     console.log(url, content)
@@ -14,7 +16,7 @@ export default function Mock () {
 
       default:
         // pass through any requests not handled above
-        return fetch(url, content).then(response => resolve(response))
+        return oldFetch(url, content).then(response => Promise.resolve(response))
     }
   }
 
@@ -49,7 +51,8 @@ export default function Mock () {
       } else {
 
         // Throw error
-        return reject('Request was not good')
+        const error = new Error('Request was not good')
+        return reject(error)
       }
     })
   }

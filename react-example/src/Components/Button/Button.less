@@ -1,7 +1,7 @@
-@import '../../Less/Animations/buttonAnimation.less';
+@import 'Less/Animations/buttonAnimation.less';
 
 button {
-
+  position: relative;
   background-color: #04C45C;
   width: 100%;
   margin-top: 28px;
@@ -13,23 +13,39 @@ button {
   line-height: 1.9rem;
   cursor: pointer;
   outline: none;
+  transition: all .2s ease-in-out;
+  transition-property: opacity, box-shadow;
 
-  button:hover{
-
+  &:hover {
     box-shadow: 0 0 20px rgb(173, 170, 170);
-
   }
-  .btn-load{
 
-    background-color: #05ac53;
+  &.btn-load {
+    opacity: .3;
+    cursor: not-allowed;
 
+    .spinner svg {
+      opacity: 1;
+      animation-name: change;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
   }
-  .load{
 
-    animation-name: change;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+  .spinner {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    transform: translate(0, -50%);
 
+    svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      transition: opacity .2s ease-in-out;
+    }
   }
 }

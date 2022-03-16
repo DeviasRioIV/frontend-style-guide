@@ -3,26 +3,43 @@ import React from 'react'
 
 // Internal modules
 import './Home.less'
-import loginService from './login.service'
+import Header from 'Components/Header/Header'
+import Footer from 'Components/Footer/Footer'
 
 export default function Home () {
 
-  // Mount effect
-  React.useEffect(() => {
-    login()
-  }, [])
-
-  // Methods
-  const login = async () => {
-    const response = await loginService({})
-    console.log('response was: ', response)
-  }
-
   return (
-    <div id='home-container'>
-      <h1>
-        This is the home page
-      </h1>
+    <div>
+
+      <Header />
+
+      <main className='home-main'>
+
+        <h2>Bamboo Products</h2>
+
+        <section className='container-img-home'>
+
+          <img src='img/Rectangle1.jpg' alt='imagen 1/3' />
+          <img src='img/Rectangle2.jpg' alt='imagen 2/3' />
+          <img src='img/Rectangle3.jpg' alt='imagen 3/3' />
+          <img src='img/Rectangle1.jpg' alt='imagen 1/3' />
+          <img src='img/Rectangle2.jpg' alt='imagen 2/3' />
+          <img src='img/Rectangle3.jpg' alt='imagen 3/3' />
+          <img src='img/Rectangle1.jpg' alt='imagen 1/3' />
+          <img src='img/Rectangle2.jpg' alt='imagen 2/3' />
+          <img src='img/Rectangle3.jpg' alt='imagen 3/3' />
+          <img src='img/Rectangle1.jpg' alt='imagen 1/3' />
+          <img src='img/Rectangle2.jpg' alt='imagen 2/3' />
+          <img src='img/Rectangle3.jpg' alt='imagen 3/3' />
+
+        </section>
+
+        <div className='scroll-img'>
+          <span className='scroll-bar'> </span>
+        </div>
+      </main>
+
+      <Footer />
     </div>
   )
 }

@@ -1,0 +1,124 @@
+footer {
+
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  display: grid;
+  grid-template: 140px 285px / 1fr;
+  background: #181813;
+
+  
+    .footer-up {
+
+      width: 100%;
+      display: grid;
+      grid-template: 1fr / 1fr 1fr;
+      place-items: center;
+      border-bottom: 2px solid #EDEDED;
+      
+
+      .footer-up-text {
+
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        border-right: 1px solid #EDEDED;
+
+        h3 {
+
+          color: #F2F2F2;
+          font-size: 1.8rem;
+          font-weight: bold;
+          line-height: 2.6rem;
+        }
+
+        a {
+
+          color: #F9F9F9;
+          font-size: 1.2rem;
+          font-weight: 400;
+          line-height: 1.7rem;
+          background-color: #292929;
+          padding: 11px 15px;
+          border-radius: 30px;
+          cursor: pointer;
+
+          img {
+
+            margin-left: 12px;
+          }
+        }
+      }
+
+      .footer-up-contact {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        
+        h3 {
+          color: #F2F2F2;
+          font-size: 1.8rem;
+          font-weight: bold;
+          line-height: 2.6rem;
+        }
+
+        img {
+
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    .footer-down {
+
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      
+      p {
+
+        color: #F2F2F2;
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 2rem;
+      }
+
+      .register {
+        
+        font-weight: bold;
+      }
+    }
+
+}
+
+@media (max-width: 700px) {
+  footer {
+
+    grid-template: 1fr 1fr / 1fr;
+  
+      .footer-up {
+  
+        width: 100%;
+        display: grid;
+        grid-template: 1fr 1fr / 1fr;
+        place-items: center;
+        border-bottom: 2px solid #EDEDED;
+        
+  
+        .footer-up-text {
+  
+          flex-direction: column;
+          border: none;
+        }
+      }
+  
+      .footer-down {
+  
+        flex-direction: column;
+      }
+  }
+}
